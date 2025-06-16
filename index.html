@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyara Beverages</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="images/logo.png" />
+</head>
+<body class="font-sans bg-white text-gray-800">
+
+  <!-- Hero Section -->
+  <section class="relative h-screen bg-cover bg-center" style="background-image: url('images/hero.jpg');">
+    <div class="absolute inset-0 bg-gradient-to-r from-green-800/60 to-transparent"></div>
+    <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-4">
+      <img src="images/logo.png" alt="Kyara Logo" class="w-24 md:w-32 mb-6 drop-shadow-lg">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow">Refreshment, Reimagined</h1>
+      <p class="mt-4 text-lg md:text-xl text-white max-w-xl drop-shadow">Rooted in tradition, powered by innovation — experience the next wave of healthy refreshment.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-white text-center px-6">
+    <h2 class="text-3xl font-bold mb-4 text-green-700">Our Mission</h2>
+    <p class="max-w-3xl mx-auto text-lg text-gray-600">
+      At <strong>Kyara Beverages</strong>, we blend the richness of ancient grains with the zest of modern fruits.
+      Our millet-based drinks aren't just tasty—they're a movement toward sustainable, healthy living.
+    </p>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-16 bg-gray-50 px-6">
+    <h2 class="text-3xl font-bold text-center mb-10 text-green-700">Discover Our Flavors</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition p-6 text-center">
+        <img src="images/drink1.jpg" alt="SunBerry" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-800">🌞 SunBerry</h3>
+        <p class="text-gray-600">Strawberry and millet harmony in every sip.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition p-6 text-center">
+        <img src="images/drink2.jpg" alt="CitrusGlow" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-800">🍊 CitrusGlow</h3>
+        <p class="text-gray-600">Zesty citrus with a golden millet twist.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition p-6 text-center">
+        <img src="images/drink3.jpg" alt="TropicalChill" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold text-green-800">🌴 TropicalChill</h3>
+        <p class="text-gray-600">Mango, pineapple, and chill millet magic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-white px-6">
+    <h2 class="text-3xl font-bold text-center mb-6 text-green-700">Get in Touch</h2>
+    <form class="max-w-xl mx-auto bg-gray-50 p-6 rounded-xl shadow-md space-y-4">
+      <input type="text" placeholder="Your Name" class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+      <input type="email" placeholder="Your Email" class="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+      <textarea placeholder="Your Message" class="w-full border border-gray-300 p-3 rounded h-32 resize-none focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+      <button type="submit" class="w-full bg-green-700 text-white py-3 rounded hover:bg-green-800 transition">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-800 text-white text-center py-4">
+    <p>&copy; 2025 Kyara Beverages. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
