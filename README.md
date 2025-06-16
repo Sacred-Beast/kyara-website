@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 
 
@@ -9,7 +9,7 @@ A clean, modern, and fully responsive website designed for **Kyara Beverages**, 
 ---
 
 ## 🌟 Live Preview
-👉 [View Live on GitHub Pages](https://yourusername.github.io/kyara-website)
+👉 [View Live on GitHub Pages](https://Sacred-Beast.github.io/kyara-website)
 
 ---
 
