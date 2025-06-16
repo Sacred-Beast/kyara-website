@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -63,3 +64,6 @@ Images were generated using **ChatGPT Sora**, customized to reflect the Kyara br
 **Jay Dosi**  
 Web Developer Intern – Kyara Beverages  
 Email: [jayofficial158@gmail.com]
+=======
+# kyara-website
+>>>>>>> 08ad5750436b9391a9e93278544da95ffca4005e
