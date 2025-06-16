@@ -18,30 +18,107 @@
 
   <style>
     html { scroll-behavior: smooth; }
-    @keyframes subtle-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes fade-in-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slide-in-left { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes slide-in-right { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes scale-in { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    @keyframes subtle-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes fade-in-up {
+      from { 
+        opacity: 0; 
+        transform: translateY(15px);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0);
+      }
+    }
+    @keyframes slide-in-left {
+      from { 
+        opacity: 0; 
+        transform: translateX(-20px);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0);
+      }
+    }
+    @keyframes slide-in-right {
+      from { 
+        opacity: 0; 
+        transform: translateX(20px);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0);
+      }
+    }
+    @keyframes scale-in {
+      from { 
+        transform: scale(0.98); 
+        opacity: 0;
+      }
+      to { 
+        transform: scale(1); 
+        opacity: 1;
+      }
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-    .animate-float { animation: subtle-float 4s ease-in-out infinite; }
-    .animate-slide-in-left { animation: slide-in-left 0.8s ease-out forwards; }
-    .animate-slide-in-right { animation: slide-in-right 0.8s ease-out forwards; }
-    .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
-    .animate-scale-in { animation: scale-in 0.8s ease-out forwards; }
-    .gradient-bg { background: linear-gradient(-45deg, #1a472a, #2d5a27, #3d7a3d, #4a9e4a); background-size: 400% 400%; animation: gradient-shift 20s ease infinite; }
-    .parallax { background-attachment: fixed; background-size: cover; background-position: center; }
+    .animate-float { 
+      animation: subtle-float 3s ease-in-out infinite;
+      will-change: transform;
+    }
+    .animate-fade-in-up { 
+      opacity: 0;
+      animation: fade-in-up 0.6s ease-out forwards;
+    }
+    .animate-slide-in-left { 
+      opacity: 0;
+      animation: slide-in-left 0.6s ease-out forwards;
+    }
+    .animate-slide-in-right { 
+      opacity: 0;
+      animation: slide-in-right 0.6s ease-out forwards;
+    }
+    .animate-scale-in { 
+      opacity: 0;
+      animation: scale-in 0.6s ease-out forwards;
+    }
+    .gradient-bg { 
+      background: linear-gradient(-45deg, #1a472a, #2d5a27, #3d7a3d, #4a9e4a); 
+      background-size: 400% 400%; 
+      animation: gradient-shift 20s ease infinite;
+    }
+    .parallax { 
+      background-attachment: fixed; 
+      background-size: cover; 
+      background-position: center;
+      position: relative;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
 
     .product-card {
-      transition: all 0.5s ease;
-      transform: translateY(30px);
+      transition: all 0.4s ease-out;
+      transform: translateY(20px);
       opacity: 0;
     }
 
     .product-card.active {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     }
 
     .product-image-container {
@@ -62,15 +139,28 @@
       max-width: 100%;
       object-fit: contain;
       padding: 1rem;
-      transition: transform 0.4s ease;
+      transition: transform 0.4s ease-out;
     }
 
     .product-card:hover .product-image {
-      transform: scale(1.05);
+      transform: scale(1.02);
+    }
+
+    .form-input {
+      transition: all 0.3s ease-out;
     }
 
     .form-input:focus {
-      transform: translateY(-2px);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-hover {
+      transition: all 0.3s ease-out;
+    }
+
+    .button-hover:hover {
+      transform: translateY(-1px);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
   </style>
@@ -157,13 +247,31 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          
+          // Add staggered delay for product cards
+          if (entry.target.classList.contains('product-card')) {
+            const cards = document.querySelectorAll('.product-card');
+            const index = Array.from(cards).indexOf(entry.target);
+            entry.target.style.transitionDelay = `${index * 0.1}s`;
+          }
         }
       });
     }, {
-      threshold: 0.1
+      threshold: 0.2,
+      rootMargin: '0px 0px -30px 0px'
     });
 
+    // Observe all product cards
     document.querySelectorAll('.product-card').forEach(card => observer.observe(card));
+
+    // Add subtle parallax effect to hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const hero = document.querySelector('.parallax');
+      if (hero) {
+        hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+      }
+    });
   </script>
 
 </body>
